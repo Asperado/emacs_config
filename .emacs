@@ -1,0 +1,113 @@
+;; Alignment always 80 column
+(set (make-local-variable 'fill-column) 80)
+
+;; Display the current time
+(display-time)
+
+;; Goto-line short-cut key
+(global-set-key "\C-l" 'goto-line)
+
+(add-to-list 'load-path "/Users/hongtaohuang/emacs")
+(require 'color-theme)
+;(setq my-color-themes (list 'color-theme-billw 'color-theme-jsc-dark 
+;			    'color-theme-sitaramv-solaris 'color-theme-resolve
+;			    'color-theme-classic 'color-theme-jonadabian-slate
+;			    'color-theme-kingsajz 'color-theme-shaman
+;			    'color-theme-subtle-blue 'color-theme-snowish
+;			    'color-theme-sitaramv-nt 'color-theme-wheat))
+
+(setq color-theme-is-global t)
+(color-theme-billw)
+
+;;tramp
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/")
+(require 'tramp)
+(setq tramp-default-method "ssh")
+
+;;javascript mode
+(autoload 'js2-mode "js2" nil t)                                     
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))     
+
+;;smart javascript indent in html
+(load-file "/Users/hongtaohuang/emacs/multi-web-mode-master/multi-web-mode.el")
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags 
+  '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+    (js-mode  "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+    (js-mode  "<script>" "</script>")
+    (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
+
+;;turn on line number on start
+(load-file "/Users/hongtaohuang/emacs/linum.el")
+(require 'linum)
+(global-linum-mode 1)
+
+;;turn marker on
+(setq-default transient-mark-mode t)
+
+;;turn off scroll, tool, and menu bar.
+;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;;redefine m-x key
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+
+;;redefine kill region and add new backspace killing binding 
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
+;(add-to-list 'load-path "/Users/hongtaohuang/emacs/python-mode")
+;(require 'python-mode)
+;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+(load-file "/Users/hongtaohuang/emacs/cedet-1.0.1/common/cedet.el")
+(add-to-list 'load-path "/Users/hongtaohuang/emacs/ecb")
+(require 'ecb)
+(require 'ecb-autoloads)
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.40"))
+
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
+(setq compilation-scroll-output t)
+
+(local-set-key "\C-c\C-c" 'my-compile)
+
+(set-frame-parameter nil 'fullscreen 'fullboth)
+
+(setq c-basic-indent 2)
+(setq tab-width 2)
+(setq indent-tabs-mode nil)
+(load "/Users/hongtaohuang/emacs/nxhtml/autostart")
+
+;; spell checking
+(add-to-list 'exec-path "/usr/local/bin")
+
+(setq ispell-program-name "aspell"
+      ispell-dictionary "english"
+      ispell-dictionary-alist
+      (let ((default '("[A-Za-z]" "[^A-Za-z]" "[']" nil
+                       ("-B" "-d" "english" "--dict-dir"
+                        "/Library/Application Support/cocoAspell/aspell6-en-6.0-0")
+                       nil iso-8859-1)))
+        `((nil ,@default)
+          ("english" ,@default))))
+
+; stop creating ~ files
+(setq make-backup-files nil) 
