@@ -12,28 +12,10 @@
 (load-theme 'tango t)
 
 ;;tramp
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/")
 (require 'tramp)
 (setq tramp-default-method "ssh")
 
-;;javascript mode
-(autoload 'js2-mode "js2" nil t)                                     
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))     
-
-;;smart javascript indent in html
-(load-file "/Users/hongtaohuang/emacs/multi-web-mode-master/multi-web-mode.el")
-(require 'multi-web-mode)
-(setq mweb-default-major-mode 'html-mode)
-(setq mweb-tags 
-  '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-    (js-mode  "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-    (js-mode  "<script>" "</script>")
-    (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 1)
-
 ;;turn on line number on start
-(load-file "/Users/hongtaohuang/emacs/linum.el")
 (require 'linum)
 (global-linum-mode 1)
 
@@ -54,14 +36,6 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
-;(add-to-list 'load-path "/Users/hongtaohuang/emacs/python-mode")
-;(require 'python-mode)
-;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-
-(load-file "/Users/hongtaohuang/emacs/cedet-1.0.1/common/cedet.el")
-(add-to-list 'load-path "/Users/hongtaohuang/emacs/ecb")
-(require 'ecb)
-(require 'ecb-autoloads)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -86,7 +60,7 @@
 (setq c-basic-indent 2)
 (setq tab-width 2)
 (setq indent-tabs-mode nil)
-(load "/Users/hongtaohuang/emacs/nxhtml/autostart")
+; (load "/Users/hongtaohuang/emacs/nxhtml/autostart")
 
 ;; spell checking
 (add-to-list 'exec-path "/usr/local/bin")
@@ -100,5 +74,30 @@
                        nil iso-8859-1)))
         `((nil ,@default)
           ("english" ,@default))))
+
+; (add-to-list 'load-path "/Users/hongtaohuang/emacs/python-mode")
+; (require 'python-mode)
+; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+; (load-file "/Users/hongtaohuang/emacs/cedet-1.0.1/common/cedet.el")
+; (add-to-list 'load-path "/Users/hongtaohuang/emacs/ecb")
+; (require 'ecb)
+; (require 'ecb-autoloads)
+
+;;javascript mode
+; (autoload 'js2-mode "js2" nil t)                                     
+; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))     
+
+;;smart javascript indent in html
+; (load-file "/Users/hongtaohuang/emacs/multi-web-mode-master/multi-web-mode.el")
+; (require 'multi-web-mode)
+; (setq mweb-default-major-mode 'html-mode)
+; (setq mweb-tags 
+;   '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+;     (js-mode  "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+;     (js-mode  "<script>" "</script>")
+;     (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+; (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+; (multi-web-global-mode 1)
 
 ; stop creating ~ files
