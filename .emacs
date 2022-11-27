@@ -111,3 +111,26 @@
 
 ; stop creating ~ files
 (setq make-backup-files nil) 
+
+branch=$(git symbolic-ref --short HEAD)
+
+alias gobashrc="emacs ~/.bash_profile"
+alias goupdatebashrc="source ~/.bash_profile"
+alias branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+
+alias gs="git status"
+alias gb='git branch'
+alias ga='git add --all'
+alias gpush='current_branch=$branch;echo $current_branch;git checkout main;git merge $current_branch;git checkout $current_branch;'
+alias gm="git commit -a"
+alias goalpha="cd /Users/edison/unicorn/alpha"
+alias ggg="cd;cd /Users/edison/Code/Duxinator/td-ameritrade-python-api-master/"
+alias aaa='gocode; git checkout alpha'
+alias mmm='gocode; git checkout main'
+alias clc='clear'
+
+alias cb="cd .."
+alias clean_emacs='rm *.~'
+alias clc="clear"
+alias ge='git push -u origin main'
+alias gocode='cd /Users/edison/Code/Duxinator'
