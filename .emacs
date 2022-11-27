@@ -8,16 +8,8 @@
 (global-set-key "\C-l" 'goto-line)
 
 (add-to-list 'load-path "/Users/hongtaohuang/emacs")
-(require 'color-theme)
-;(setq my-color-themes (list 'color-theme-billw 'color-theme-jsc-dark 
-;			    'color-theme-sitaramv-solaris 'color-theme-resolve
-;			    'color-theme-classic 'color-theme-jonadabian-slate
-;			    'color-theme-kingsajz 'color-theme-shaman
-;			    'color-theme-subtle-blue 'color-theme-snowish
-;			    'color-theme-sitaramv-nt 'color-theme-wheat))
 
-(setq color-theme-is-global t)
-(color-theme-billw)
+(load-theme 'tango t)
 
 ;;tramp
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/")
